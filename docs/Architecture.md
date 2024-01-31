@@ -11,12 +11,13 @@ Together, the address bus width and word length form the foundational framework 
 
 ## Instruction Set
 
-Diving deeper into our virtual CPU’s instruction set, we encounter a diverse array of operations defined by unique opcodes. These binary codes, while cryptic to humans, are the direct commands our CPU understands. For human readability, we pair each opcode with a mnemonic, like NOP for a no-operation instruction.
+Our virtual CPU needs sn instruction set. These binary codes, while cryptic to humans, are the direct commands our CPU understands. For human readability, we pair each opcode with a mnemonic, like NOP for a no-operation instruction.
 
 The instruction set features various operand types to support different operation needs:
 
 * Implied operands are embedded within the instruction, requiring no additional data.
-* Absolute and direct addressing provide straightforward ways to access specific memory locations or values.
+* Absolute operands provide a hard coded value to the operation.
+* Direct addressing provide straightforward way to access specific memory locations.
 * Indirect addressing introduces flexibility, allowing operations on data whose locations are determined at runtime.
 
 | Opcode | Mnemonic | Operand Size | Description |
@@ -92,5 +93,4 @@ The instruction set features various operand types to support different operatio
 | 0xF4   | STA $(xxxx),X | 16 bits     | Store accumulator with a value at indirectaddress+offset by X |
 | 0xF5   | STA $(xxxx),Y | 16 bits     | Store accumulator with a value at indirectaddress+offset by X |
 | 0xF6   | JMP $(xxxx)   | 16 bits     | Jump to a indirect address |
-
 
