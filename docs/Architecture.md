@@ -38,14 +38,12 @@ Together, the address bus width and word length form the foundational framework 
 | 0x16   | POX      | 0 bits       | Pop stack into register X
 | 0x17   | PSY      | 0 bits       | Push Y register onto stack
 | 0x18   | POY      | 0 bits       | Pop stack into register Y
-
 | 0x40   | LDA #xx  | 8 bits       | Load accumulator with a specified value |
 | 0x41   | LDX #xx  | 8 bits       | Load X register with a specified value |
 | 0x42   | LDY #xx  | 8 bits       | Load Y register with a specified value |
 | 0x43   | CMP #xx  | 8 bits       | Compare accumulator with a specified value |
 | 0x44   | CPX #xx  | 8 bits       | Compare register X with a specified value |
 | 0x45   | CPY #xx  | 8 bits       | Compare register Y with a specified value |
-
 | 0x80   | JMP $xxxx | 16 bits     | Jump to a specified address |
 | 0x81   | JSR $xxxx | 16 bits     | Jump to subroutine and save the return address |
 | 0x82   | STA $xxxx | 16 bits     | Store accumulator at a specified memory address |
@@ -79,8 +77,6 @@ Together, the address bus width and word length form the foundational framework 
 | 0x9E   | ROL $xxxx | 16 bits     | Rotate shift left of memory location |
 | 0x9F   | ROR $xxxx | 16 bits     | Rotate shift right of memory location |
 | 0xA0   | ORA $xxxx | 16 bits     | Logical OR accumulator with value at address |
-
-
 | 0xF0   | LDA $(xxxx)   | 16 bits     | Load accumulator with a value at indirect address |
 | 0xF1   | LDA $(xxxx),X | 16 bits     | Load accumulator with a value at indirectaddress+offset by X |
 | 0xF2   | LDA $(xxxx),Y | 16 bits     | Load accumulator with a value at indirectaddress+offset by Y |
@@ -88,6 +84,5 @@ Together, the address bus width and word length form the foundational framework 
 | 0xF4   | STA $(xxxx),X | 16 bits     | Store accumulator with a value at indirectaddress+offset by X |
 | 0xF5   | STA $(xxxx),Y | 16 bits     | Store accumulator with a value at indirectaddress+offset by X |
 | 0xF6   | JMP $(xxxx)   | 16 bits     | Jump to a indirect address |
-
 
 
