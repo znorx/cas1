@@ -18,7 +18,8 @@ The instruction set features various operand types to support different operatio
 * Implied operands are embedded within the instruction, requiring no additional data.
 * Absolute operands provide a hard coded value to the operation.
 * Direct addressing provide straightforward way to access specific memory locations.
-* Indirect addressing introduces flexibility, allowing operations on data whose locations are determined at runtime.
+* Indirect addressing introduces flexibility, allowing operations on data whose locations are held in another memory location.  
+* Indexed addressing applies the value of a register (X or Y) as an offset to the value.  
 
 | Opcode | Mnemonic | Operand Size | Description |
 |--------|----------|--------------|-------------|
