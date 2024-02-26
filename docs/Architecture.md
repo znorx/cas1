@@ -95,3 +95,28 @@ The instruction set features various operand types to support different operatio
 | 0xF5   | STA $(xxxx),Y | 16 bits     | Store accumulator with a value at indirectaddress+offset by X |
 | 0xF6   | JMP $(xxxx)   | 16 bits     | Jump to a indirect address |
 
+## Interrupt Handling
+
+In the realm of computer architecture, efficient management of tasks is paramount. Two fundamental components that facilitate this efficiency are Interrupt Requests (IRQs) and Interrupt Service Routines (ISRs). An IRQ is a hardware mechanism that allows peripheral devices to signal to the CPU that they require immediate attention. This signal typically manifests as a dedicated line that transitions to a low state, indicating an interrupt request.
+
+Upon detecting an IRQ, the CPU momentarily suspends its current operations—a process known as interrupting. It then proceeds to execute an ISR, a predefined segment of code within the operating system specifically designed to handle the interrupt. The ISR is a critical section of software that addresses the needs of the interrupting device, ensuring that the system can continue to function without significant delays.
+
+During the execution of an ISR, the CPU sets an acknowledgment line, known as IRQ_ACK, to a high state. This serves as an indication that the interrupt has been recognized and is being serviced. The CPU's role in this process is to save its current state before handling the interrupt, ensuring that it can resume its previous tasks without loss of information once the ISR is complete.
+
+The ISR concludes with a Return from Interrupt (RTI) instruction, which signals the end of the interrupt service. Upon executing the RTI instruction, the CPU lowers the IRQ_ACK line, indicating that normal processing can resume. The device that initiated the IRQ, upon being serviced satisfactorily, releases the IRQ line, returning it to a high state and allowing the system to process other interrupts or continue with regular operations.
+
+This interrupt-driven model is essential for real-time systems, where the ability to respond promptly to external events is crucial. It allows the CPU to address multiple concurrent demands efficiently, ensuring that high-priority tasks are serviced with minimal delay, while lower-priority tasks are not neglected. Through the use of IRQs and ISRs, a balance is struck between responsiveness and computational throughput, enabling complex systems to operate smoothly and reliably.
+
+### The IRQ cycle
+
+In our virtual system, the CPU's interaction with IRQs is a carefully orchestrated sequence that occurs in sync with the system's clock cycles. The CPU monitors the IRQ line during the low cycle of the bus clock, a period of relative inactivity where it is primed to detect any requests for attention. Should the IRQ line be found in a low state, signaling an interrupt request, the CPU promptly responds by setting the IRQ_ACK line high, an acknowledgment that the interrupt will be serviced.
+
+The next steps involve the CPU preserving its current context to ensure a seamless return to its interrupted task later. It does this by pushing the state of its registers, along with the Program Counter (PC), onto the stack. This stack acts as a temporary storage that safeguards the CPU's state during the interrupt service.
+
+With the current state secured, the CPU then retrieves the ISR vector from a designated location in main RAM. This vector is a pointer to the ISR's entry point within the operating system. The vector-based approach offers flexibility, allowing programmers to modify the ISR location if needed, providing a means to customize interrupt handling or to insert additional layers of interrupt processing.
+
+As the system clock transitions to the next high cycle, the CPU is ready to execute the ISR. It is at this juncture that the CPU, now armed with the address of the ISR from the vector, begins the interrupt service. The ISR is executed with precision, addressing the needs that triggered the interrupt.
+
+Upon completion of the ISR, a special instruction, RTI (Return from Interrupt), is issued. This instruction is the cue for the CPU to restore its previous state. The RTI instruction initiates the pop operation from the stack, reinstating the registers and the pre-interrupt PC. Concurrently, the IRQ_ACK line is lowered, signaling the end of the interrupt service.
+
+The CPU, now restored to its prior state, continues from the exact point of interruption, resuming its process as though the interrupt had never occurred. This method, while straightforward, intentionally omits the complexity of handling nested interrupts, where one interrupt can be interrupted by another—a scenario that adds layers of complexity to the interrupt management system. Our virtual CPU design opts for simplicity to ensure clarity and reliability in the interrupt handling process. 
