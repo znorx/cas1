@@ -1,7 +1,7 @@
 
 # CAS-I Building a CPU and functional OS from scratch
 
-In this project, we’re setting out to create a virtual CPU and operating system, taking cues from systems designed around the 6502 microprocessor. The 6502 has been a staple in the history of computing, powering iconic systems like the Apple II and the Commodore 64. Our goal is to capture the essence of working with such classic hardware but in a modern, virtual environment.  We’ll be leveraging the robust capabilities of the ESP32 dev board as our host hardware. Known for its generous SRAM and ample processing power, the ESP32 provides an ideal platform for developing a capable and efficient emulator.  And it's cheap!  An ESP32-S3-DevKitC-1-N16R8 ESP32 S3 Development Board goes for about $13 on Amazon.
+In this project, we’re setting out to create a virtual CPU and operating system, taking cues from systems designed around the 6502 microprocessor. The 6502 has been a staple in the history of computing, powering iconic systems like the Apple II and the Commodore 64. Our goal is to capture the essence of working with such classic hardware but in a modern, virtual environment.  We’ll be leveraging the robust capabilities of the ESP32 dev board as our host hardware. Known for its generous SRAM and ample processing power, the ESP32 provides an ideal platform for developing a capable and efficient emulator.  And it's cheap!  An ESP32-S3-DevKitC-1-N16R8 Development Board goes for about $13 on Amazon.
 
 ## Starting with the CPU
 
@@ -21,4 +21,5 @@ Embarking on a project like this offers a unique opportunity to delve into the n
 
 Whether you’re a seasoned programmer, a hobbyist, or a student of computer science, this project promises a rewarding challenge. It’s about learning, experimenting, and paying homage to one of the most influential pieces of computing history, all while creating something new and unique.
 
+For the cost of a board, you will witness the assembly of a computer in real-time, gaining comprehensive understanding of each component throughout the process.
 
