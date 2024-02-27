@@ -120,3 +120,9 @@ As the system clock transitions to the next high cycle, the CPU is ready to exec
 Upon completion of the ISR, a special instruction, RTI (Return from Interrupt), is issued. This instruction is the cue for the CPU to restore its previous state. The RTI instruction initiates the pop operation from the stack, reinstating the registers and the pre-interrupt PC. Concurrently, the IRQ_ACK line is lowered, signaling the end of the interrupt service.
 
 The CPU, now restored to its prior state, continues from the exact point of interruption, resuming its process as though the interrupt had never occurred. This method, while straightforward, intentionally omits the complexity of handling nested interrupts, where one interrupt can be interrupted by another—a scenario that adds layers of complexity to the interrupt management system. Our virtual CPU design opts for simplicity to ensure clarity and reliability in the interrupt handling process. 
+
+sampke 
+| 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
+|-----|----|----|----|---|---|---|---|
+|  1  | 0  | 1  | 0 | 1 | 0 | 1 | 0 |
+
